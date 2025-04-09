@@ -1,0 +1,33 @@
+trigger:
+  none
+
+pool:
+  name: "Comp367_SH_Agent"
+
+stages:
+- stage: BuildAndPublish
+  displayName: Build And Publish App
+  jobs:
+  - job: Build
+    displayName: Build And Publish App
+    steps:
+    - task: UseDotNet@2
+      inputs:
+        packageType: 'sdk'
+        version: '8.0.407'
+
+    - script: dotnet restore Comp367Quiz4.sln
+      displayName: 'Restore Solution'
+
+    - script: dotnet build Comp367Quiz4.sln --no-incremental 
+      displayName: 'Build Project'
+
+    - script: dotnet publish Comp367Quiz4.sln -c Debug -o $(Build.ArtifactStagingDirectory)
+      displayName: 'Publish Project'
+
+    - task: PublishBuildArtifacts@1
+      inputs:
+        PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+        ArtifactName: 'drop'
+        publishLocation: 'Container'
+      displayName: 'Publish Artifact to ADO'
