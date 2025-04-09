@@ -4,7 +4,7 @@
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("App is now connected to the database!");
+            Console.WriteLine("Database access has already been done on April 1, 2025 by **** (Ronald)");
         }
     }
 }
