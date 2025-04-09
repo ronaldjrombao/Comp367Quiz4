@@ -22,7 +22,7 @@ stages:
     - script: dotnet build Comp367Quiz4.sln --no-incremental 
       displayName: 'Build Project'
 
-    - task: PublishBuildArtifacts@2
+    - task: PublishBuildArtifacts@1
       inputs:
         PathtoPublish: '$(Build.ArtifactStagingDirectory)'
         ArtifactName: 'drop'
