@@ -22,7 +22,7 @@ stages:
     - script: dotnet build Comp367Quiz4.sln --no-incremental 
       displayName: 'Build Project'
 
-    - script: dotnet publish Ombao_EjehComp306.sln -c Debug -o $(Build.ArtifactStagingDirectory)
+    - script: dotnet publish Comp367Quiz4.sln -c Debug -o $(Build.ArtifactStagingDirectory)
       displayName: 'Publish Project'
 
     - task: PublishBuildArtifacts@1
